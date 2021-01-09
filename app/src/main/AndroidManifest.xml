@@ -3,6 +3,7 @@
     package="com.yen.dogbones">
 
     <application
+        android:name="com.yen.dogbones.DogBonesApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
