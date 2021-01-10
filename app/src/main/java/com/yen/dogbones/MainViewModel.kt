@@ -16,10 +16,14 @@ class MainViewModel @ViewModelInject constructor(val imageRepository: ImageRepos
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun init() {
         viewModelScope.launch(Dispatchers.IO) {
-            val image = imageRepository.getRandomBreedImage()
+            val imagesResponse = imageRepository.getRandomBreedImages(count = 10)
+
+            val images = imagesResponse.message.map {
+                Image(url = it)
+            }
 
             withContext(Dispatchers.Main) {
-                _imagesLiveData.value = listOf(image)
+                _imagesLiveData.value = images
             }
         }
     }

@@ -13,7 +13,7 @@ import com.yen.dogbones.R
 @EpoxyModelClass(layout = R.layout.vh_image)
 abstract class ImageModel : EpoxyModelWithHolder<ImageHolder>() {
 
-    @EpoxyAttribute lateinit var imageUrl: Uri
+    @EpoxyAttribute lateinit var imageUrl: String
 
     override fun bind(holder: ImageHolder) {
         super.bind(holder)

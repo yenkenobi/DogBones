@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
                 images.forEach {
                     ImageModel_()
                         .id(it.hashCode())
-                        .imageUrl(Uri.parse(it.message))
+                        .imageUrl(it.url)
                         .addTo(this)
                 }
 

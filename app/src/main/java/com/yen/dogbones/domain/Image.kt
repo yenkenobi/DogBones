@@ -1,3 +1,3 @@
 package com.yen.dogbones.domain
 
-data class Image(val message: String, val status: String)
+data class Image(val url: String)
