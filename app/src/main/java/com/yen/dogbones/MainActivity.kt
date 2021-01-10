@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.yen.dogbones.data.service.ImageRepository
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -23,5 +24,9 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(mainViewModel)
         setContentView(R.layout.activity_main)
 
+        mainViewModel.imagesLivedata.observe(this) {
+            images ->
+                // TODO: add images to recyclerview
+        }
     }
 }
