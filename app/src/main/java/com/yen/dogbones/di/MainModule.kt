@@ -1,5 +1,7 @@
 package com.yen.dogbones.di
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.yen.dogbones.BuildConfig
 import com.yen.dogbones.data.api.Api
 import com.yen.dogbones.data.service.ImageRepository
@@ -21,6 +23,15 @@ class MainModule {
 
     @Singleton
     @Provides
+    fun providesMoshi(): Moshi {
+        val moshi = Moshi.Builder()
+            .addLast(KotlinJsonAdapterFactory())
+            .build()
+        return moshi
+    }
+
+    @Singleton
+    @Provides
     fun providesOkHttpClient(): OkHttpClient {
         val loggingLevel =
             if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY
@@ -34,9 +45,9 @@ class MainModule {
 
     @Singleton
     @Provides
-    fun providesApi(okHttpClient: OkHttpClient): Api = Retrofit.Builder()
-        .addConverterFactory(MoshiConverterFactory.create())
-        .baseUrl("https://dog.ceo/api/")
+    fun providesApi(okHttpClient: OkHttpClient, moshi: Moshi): Api = Retrofit.Builder()
+        .addConverterFactory(MoshiConverterFactory.create(moshi))
+        .baseUrl("https://dog.ceo/")
         .client(okHttpClient)
         .build()
         .create(Api::class.java)

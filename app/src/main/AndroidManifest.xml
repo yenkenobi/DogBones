@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yen.dogbones">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.yen.dogbones.DogBonesApplication"
         android:allowBackup="true"
