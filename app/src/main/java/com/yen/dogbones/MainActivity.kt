@@ -2,6 +2,7 @@ package com.yen.dogbones
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import com.yen.dogbones.data.service.ImageRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -14,17 +15,13 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject lateinit var imageRepository: ImageRepository
+    val mainViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        lifecycle.addObserver(mainViewModel)
         setContentView(R.layout.activity_main)
 
-        GlobalScope.launch(context = Dispatchers.IO) {
-            val image = imageRepository.getRandomBreedImage()
-
-            if (image != null) {
-
-            }
-        }
     }
 }
