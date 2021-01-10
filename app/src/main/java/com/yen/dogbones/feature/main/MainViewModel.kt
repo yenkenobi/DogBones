@@ -1,4 +1,4 @@
-package com.yen.dogbones
+package com.yen.dogbones.feature.main
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*

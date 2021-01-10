@@ -1,10 +1,10 @@
-package com.yen.dogbones
+package com.yen.dogbones.feature.main
 
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.airbnb.epoxy.EpoxyRecyclerView
+import com.yen.dogbones.R
 import com.yen.dogbones.data.service.ImageRepository
 import com.yen.dogbones.ui.ImageModel_
 import dagger.hilt.android.AndroidEntryPoint
